@@ -1,0 +1,26 @@
+.country-select .country-list {
+    z-index: 3;
+}
+.inside{
+    width: 100%;
+}
+.country-select.inside input, .country-select.inside input[type=text]{
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 62px;
+    border: 1px solid #DAE3F3;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 100%;
+}
+.country-select.inside input, .country-select.inside input[type=text]:focus{
+    outline: none;
+}
+.country-select.inside .flag-dropdown .selected-flag {
+    border-right: 1px solid #DAE3F3 !important;
+}
+
+/*country empty selection workaround*/
+.country-select .xn {
+   background-position:-208px -154px
+}

@@ -1,0 +1,27 @@
+.ui-slider-horizontal {
+    height: 0;
+  }
+  .ui-slider .ui-slider-handle {
+    top: -9.5px !important;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid #DAE3F3;
+    background-color: #fff;
+}
+
+.ui-widget-content {
+    border: none !important;
+    border-bottom: 2px solid #DAE3F3 !important;
+    border-radius: 100px;
+}
+
+
+.active-slider.ui-slider .ui-slider-handle {
+    border: 2px solid #FFFFFF;
+    background-color: #0056FD;
+}
+
+.active-slider.ui-widget-content {
+    border-bottom: 2px solid #0056FD !important;
+}

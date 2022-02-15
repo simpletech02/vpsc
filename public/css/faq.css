@@ -1,0 +1,222 @@
+:root {
+  --firstColor: white; /* black */
+  --shadowColor: black ;   /* #00000015 */
+  --cardColor : #1F1E24; /* white */
+  --imgBorderColor :rgba(0, 0, 0, 0.8);  /* rgba(0, 0, 0, 0.07) */
+}
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
+body {
+  font-family: "Sora", sans-serif;
+}
+/* end fonts */
+
+/* start header */
+.header nav {
+  padding: 32px 0;
+}
+.header nav .main-logo {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 30px;
+}
+.header nav .main-logo span {
+  color: #0056fd;
+}
+.header nav .nav-link {
+  font-size: 14px;
+  line-height: 18px;
+  color: #12233B !important;
+  padding: 0  56px 0  0 !important;
+}
+.header nav .nav-item:last-of-type .nav-link {
+  padding-right: 0 !important;
+}
+.header nav .active {
+  font-weight: bold;
+}
+.navbar-toggler {
+  border: none;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url('../img/toggler.svg');
+}
+
+/* ads */
+@media (max-width:767px) {
+  header .banner-sm {
+    display: block !important;
+  }
+  header .banner-sm img {
+    width: 100% !important;
+  }
+  header .banner-lg {
+    display: none;
+  }
+}
+/* end ads */
+/* end header */
+/* start faq */
+.faq{
+  padding-top: 64px;
+  padding-bottom: 60px;
+}
+.faq .section-heading {
+  text-align: center;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 50px;
+  color: #12233B;
+}
+.faq .search {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+@media (max-width:767px) {
+  .faq .section-heading{
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .faq .search {
+    padding-top: 24px;
+  }
+}
+.faq .search .col-md-9 ,
+.faq .search .col-12{
+  position: relative;
+}
+.faq .search input {
+  height: 72px;
+  background: #F4F8FF;
+  border-radius: 8px;
+  padding: 0 80px 0 20px;
+}
+.faq .search input:focus {
+  box-shadow: none;
+}
+.faq .search a {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0056FD;
+  border-radius: 0px 8px 8px 0px; 
+  padding: 22px;
+}
+.faq .questions .accordion-item {
+  border-top: 1px solid rgba(0,0,0,0.2);
+  background-color: #F4F8FF;
+}
+.faq .questions .accordion-item:not(:first-of-type) {
+  border-top: 0 !important;
+}
+.faq .questions .accordion-item:last-of-type {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.faq .questions .accordion-item .accordion-button:not(.collapsed) {
+  position: relative;
+  background-color: #F4F8FF;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  color:  #0056FD;
+  padding: 36px 28px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.faq .questions .accordion-item .accordion-button::after {
+  background-image: url(../img/plus.svg);
+}
+.faq .questions .accordion-item .accordion-button:not(.collapsed)::after {
+  background-image: url(../img/minus.svg);
+}
+.faq .questions .accordion-item .accordion-button:focus {
+  
+  border-color: none;
+  box-shadow: none;
+}
+.faq .questions .accordion-item .accordion-button {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  color: #12233B;
+  padding: 36px 28px;
+}
+.faq .questions .accordion-item .accordion-body{
+  padding: 24px 28px 50px;
+  font-size: 16px;
+  line-height: 25px;
+  color: #12233B;
+}
+
+/* End Faq */
+/* Start Footer */
+footer {
+  padding-top: 60px;
+  padding-bottom: 50px;
+}
+footer hr {
+  margin-top: 40px;
+  margin-bottom: 48px;
+}
+@media (max-width:767px) {
+  footer .banner-sm {
+    display: block !important;
+  }
+  footer .banner-sm img {
+    width: 100% !important;
+  }
+  footer .banner-lg {
+    display: none;
+  }
+}
+footer .rights a {
+  text-decoration: none;
+}
+footer .rights .main-logo {
+  color: black;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 30px;
+  padding-bottom: 2px;
+}
+footer .rights .main-logo span {
+  color: #0056fd;
+}
+footer .rights .up-btn {
+  font-size: 10px;
+  line-height: 13px;
+  text-align: center;
+  color: #12233B;
+}
+@media (max-width:767px) {
+  footer .rights .main-logo {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  footer .rights p {
+    font-size: 8px;
+  }
+  footer .rights .up-btn {
+    display: none !important;
+  }
+}
+/* End Footer */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 6px;
+}
+
+
+
+::-webkit-scrollbar-thumb {
+  background: #0056FD;
+  border-radius: 100px;
+} 
+
+::-webkit-scrollbar-track {  
+    background-color: #F4F8FF;
+    border-radius:100px ;
+} 
