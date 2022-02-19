@@ -218,7 +218,7 @@ class PlanTable extends Component
                         $builder->where('virtualization', $this->filter['technology']);
                     }
                 })
-                ->paginate($this->view)
+                ->paginate($this->view)->onEachSide(0)
         ]);
     }
 }

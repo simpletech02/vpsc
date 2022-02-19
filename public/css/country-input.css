@@ -5,13 +5,14 @@
     width: 100%;
 }
 .country-select.inside input, .country-select.inside input[type=text]{
-    padding-top: 11px;
-    padding-bottom: 11px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     padding-left: 62px;
     border: 1px solid #DAE3F3;
     box-sizing: border-box;
     border-radius: 8px;
     width: 100%;
+    font-size: 14px;
 }
 .country-select.inside input, .country-select.inside input[type=text]:focus{
     outline: none;

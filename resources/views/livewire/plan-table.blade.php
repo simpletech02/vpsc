@@ -1,42 +1,42 @@
 <div>
     <!-- Landing -->
-    <div id="landing">
+    <section id="landing">
         <div class="container">
             <div class="row-container">
                 <div class="row-one">
-                    <div class="row justify-content-between g-5">
-                        <div class="col-md-6 col-lg-3">
+                    <div class="row justify-content-between g-4">
+                        <div class="col-md-6 col-xl-3">
                             <div wire:ignore class="row justify-content-between align-items-center">
-                                <div class="col-6">
-                                    <h2>RAM Size</h2>
+                                <div class="col-5">
+                                    <strong class="input-headline">RAM Size</strong>
                                 </div>
-                                <div class="col-6 text-end text-nowrap">
-                                    <h3 id="ram-min"></h3>
-                                    <h3>-</h3>
-                                    <h3 id="ram-max"></h3>
+                                <div class="col-7 text-end text-nowrap">
+                                    <div class="min-max-number" id="ram-min"></div>
+                                    <div class="min-max-number">-</div>
+                                    <div class="min-max-number" id="ram-max"></div>
                                 </div>
                                 <div class="col-12 rng">
                                     <div id="ram-range"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-xl-3">
                             <div wire:ignore class="row justify-content-between align-items-center">
-                                <div class="col-6">
-                                    <h2>Disk Size</h2>
+                                <div class="col-4">
+                                    <strong class="input-headline">Disk Size</strong>
                                 </div>
-                                <div class="col-6 text-end">
-                                    <h3 id="disk-min"></h3>
-                                    <h3>-</h3>
-                                    <h3 id="disk-max"></h3>
+                                <div class="col-8 text-end">
+                                    <div class="min-max-number" id="disk-min"></div>
+                                    <div class="min-max-number">-</div>
+                                    <div class="min-max-number" id="disk-max"></div>
                                 </div>
                                 <div class="col-12 rng">
                                     <div id="disk-range"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <h2>Disk Type</h2>
+                        <div class="col-md-6 col-xl-3">
+                            <strong class="input-headline">Disk Type</strong>
                             <div>
                                 <select
                                     class="form-select"
@@ -50,15 +50,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div wire:ignore class="col-md-6 col-lg-3">
+                        <div wire:ignore class="col-md-6 col-xl-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-6 text-nowrap">
-                                    <h2>CPU Core Count</h2>
+                                    <strong class="input-headline">CPU Core Count</strong>
                                 </div>
                                 <div class="col-6 text-end text-nowrap">
-                                    <h3 id="cpu-min"></h3>
-                                    <h3>-</h3>
-                                    <h3 id="cpu-max"></h3>
+                                    <div class="min-max-number" id="cpu-min"></div>
+                                    <div class="min-max-number">-</div>
+                                    <div class="min-max-number" id="cpu-max"></div>
                                 </div>
                                 <div class="col-12 rng">
                                     <div id="cpu-range"></div>
@@ -67,12 +67,14 @@
                         </div>
                     </div>
                 </div>
+                
                 <hr />
+
                 <div class="second-row">
-                    <div class="row justify-content-between g-5">
+                    <div class="row justify-content-between g-4">
                         <div wire:ignore class="col-md-6 col-lg-3">
                             <div class="country-container">
-                                <h2>Country</h2>
+                                <strong class="input-headline">Country</strong>
                             </div>
 
                             <div class="form-item">
@@ -83,7 +85,7 @@
                             </div>
                         </div>
                         <div wire:ignore class="col-md-6 col-lg-3">
-                            <h2>Technology</h2>
+                            <strong class="input-headline">Technology</strong>
                             <div>
                                 <select
                                     class="form-select"
@@ -99,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
-                            <h2>Payment Options</h2>
+                            <strong class="input-headline">Payment Options</strong>
                             <div>
                                 <select
                                     class="form-select"
@@ -117,27 +119,43 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="crypto">
                                 <div class="col-12">
-                                    <h2>Crypto Friendly</h2>
+                                    <strong class="input-headline">Crypto Friendly</strong>
                                 </div>
-                                <div class="radio-input-container">
-                                    <label class="radio-input">
-                                        <input type="radio" name="crypto_friendly" wire:model.defer="filter.cryptoFriendly" value="1" />
-                                        <span>Yes</span>
-                                    </label>
-                                    <label class="radio-input">
-                                        <input type="radio" name="crypto_friendly"  wire:model.defer="filter.cryptoFriendly" value="0" />
-                                        <span>No</span>
-                                    </label>
+                                <div class="radio-input-container row">
+                                    <div class="col-6">
+                                        <label class="radio-input">
+                                            <input type="radio" name="crypto_friendly" wire:model.defer="filter.cryptoFriendly" value="1" />
+                                            <span>Yes</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label class="radio-input">
+                                            <input type="radio" name="crypto_friendly"  wire:model.defer="filter.cryptoFriendly" value="0" />
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-12 mt-2">
+                                        <label class="radio-input">
+                                            <input type="radio" name="crypto_friendly"  wire:model.defer="filter.cryptoFriendly" value="0" />
+                                            <span class="with-image">
+                                                <img src="{{asset('img/btcpay.svg')}}" alt="BtcPayServer"> BtcPayServer
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <hr class="hr-two" />
+                
                 <div class="third-row">
-                    <div class="row justify-content-between g-5">
-                        <div class="col-md-6 col-lg-3">
-                            <h2>Traffic</h2>
+                    <div class="row justify-content-between g-4">
+                        <div class="col-md-6 col-xl-2">
+                            <strong class="input-headline">Traffic</strong>
                             <div>
                                 <select
                                     class="form-select"
@@ -151,23 +169,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div wire:ignore class="row justify-content-between align-items-center">
-                                <div class="col-6">
-                                    <h2>Price <span>(monthly)</span></h2>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <h3 id="price-min"></h3>
-                                    <h3>-</h3>
-                                    <h3 id="price-max"></h3>
-                                </div>
-                                <div class="col-12 rng">
-                                    <div id="price-range"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <h2>Sorting</h2>
+                        
+                        <div class="col-md-6 col-xl-2">
+                            <strong class="input-headline">Sorting</strong>
                             <div>
                                 <select
                                     class="form-select"
@@ -180,7 +184,44 @@
                                 </select>
                             </div>
                         </div>
-                        <form id="search-form" data-id="{{$this->id}}" wire:submit.prevent="search" class="col-md-6 col-lg-3">
+
+                        <div class="col-md-12 col-xl-5">
+                            <div wire:ignore class="row justify-content-between align-items-center">
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong class="input-headline">Price <span>(monthly)</span></strong>
+                                        </div>
+                                        
+                                        <div class="col-6 text-end">
+                                            <div class="min-max-number" id="price-min"></div>
+                                            <div class="min-max-number">-</div>
+                                            <div class="min-max-number" id="price-max"></div>
+                                        </div>
+                                
+                                        <div class="col-12 rng">
+                                            <div id="price-range"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-2 mt-2">
+                                    <label for="" class="form-label">Min</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control price-range-min-max" id="">
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-2 mt-2">
+                                    <label for="" class="form-label">Max</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control price-range-min-max" id="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="search-form" data-id="{{$this->id}}" wire:submit.prevent="search" class="col-md-12 col-xl-3">
                             <div class="landing-btn">
                                 <button class="btn" type="submit">Search</button>
                             </div>
@@ -189,11 +230,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- End Landing -->
 
     <!-- Start pages -->
-    <div id="pages">
+    <section id="pages">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12">
@@ -202,10 +243,10 @@
             </div>
             {{ $plans->links('components.table.pagination') }}
         </div>
-    </div>
+    </section>
 
     <!-- Table  -->
-    <div id="table">
+    <section id="table">
         <div class="container">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -241,13 +282,19 @@
                                 <td>
                                     @switch($plan->currency_code)
                                         @case('usd')
-                                            $ {{number_format($plan->price_usd, 2)}}
+                                            <strong>$ {{number_format($plan->price_usd, 2)}}</strong>
+                                            <br> € {{number_format($plan->price_eur, 2)}}
+                                            <br> ₽ {{number_format($plan->price_rub, 0)}}
                                         @break
                                         @case('eur')
-                                            € {{number_format($plan->price_eur, 2)}}
+                                            $ {{number_format($plan->price_usd, 2)}}
+                                            <br> <strong>€ {{number_format($plan->price_eur, 2)}}</strong>
+                                            <br> ₽ {{number_format($plan->price_rub, 0)}}
                                         @break
                                         @case('rub')
-                                            ₽ {{number_format($plan->price_rub, 2)}}
+                                            $ {{number_format($plan->price_usd, 2)}}
+                                            <br> € {{number_format($plan->price_eur, 2)}}
+                                            <br> <strong>₽ {{number_format($plan->price_rub, 0)}}</strong>
                                         @break
                                     @endswitch
                                 </td>
@@ -272,13 +319,13 @@
                 </table>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Bottom pages -->
-    <div id="pages" class="bottom-pages">
+    <section id="pages" class="bottom-pages">
         <div class="container pt-4 pb-lg-0">
             {{ $plans->links('components.table.pagination') }}
         </div>
-    </div>
+    </section>
 
 </div>

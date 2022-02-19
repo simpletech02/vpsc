@@ -63,25 +63,31 @@ body {
 #landing .row-container{
   background: #F4F8FF;
   border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-#landing h2 {
-  font-size: 16px;
+#landing .input-headline {
+  font-size: 14px;
   color: #12233B;
   font-weight: 700;
+  margin-bottom: 6px;
+  display: inline-block;
 }
-#landing h2 span{
+#landing .input-headline span{
   font-size: 14px;
   color: #12233B;
   font-weight: 400;
 }
-#landing h3 {
+#landing .min-max-number{
   font-size: 12px;
   color: #12233B;
-  font-weight: 700;
+  font-weight: 400;
   display: inline-block;
+  margin-bottom: 8px;
 }
 #landing .rng{
-  margin-top: 20px;
+  margin-top: 16px;
+  padding: 0 20px;
 }
 
 #landing select ,
@@ -89,12 +95,13 @@ body {
   width: 100%;
 }
 #landing select{
-  padding-top: 11px;
-  padding-bottom: 11px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 16px;
   border: 1px solid #DAE3F3;
   box-sizing: border-box;
   border-radius: 8px;
+  font-size: 14px;
 }
 #landing select{
   outline: none;
@@ -102,10 +109,20 @@ body {
 .form-select {
   background-image: url(../img/triangle-down1.svg)
 }
+
+.form-label{
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.form-control.price-range-min-max{
+  padding: 4px 5px;
+  font-size: 14px;
+}
 #landing .row-one ,
 #landing .second-row ,
 #landing .third-row {
-  padding: 24px;
+  padding: 4px 24px;
 }
 #landing .second-row .crypto input {
   display: none;
@@ -116,6 +133,7 @@ body {
 #landing .second-row .crypto label span {
   position: relative;
   line-height: 22px;
+  font-size: 14px;
 }
 #landing hr {
   height: 2px;
@@ -143,40 +161,56 @@ body {
 }
 
 #landing .second-row .crypto label span:after {
-  background: #0056FD;
-  width: 13px;
+  width: 7px;
   height: 13px;
   position: absolute;
-  top: 3px;
-  left: 5px;
+  top: 1px;
+  left: 9px;
   transition: 300ms;
   opacity: 0;
   border-radius: 2px;
+  border-bottom: 3px solid #0056fd;
+  border-right: 3px solid #0056fd;
+  transform: rotate(45deg);
 }
 #landing .second-row .crypto label input:checked+span:after {
   opacity: 1;
 }
+
+#landing .second-row .crypto .radio-input .with-image img{
+  display: inline-block;
+  width: 20px;
+}
+
+#landing .second-row .crypto .radio-input .with-image {
+  display: flex;
+  align-items:  center;
+}
+
+#landing .second-row .crypto .radio-input .with-image:after{
+  top: 4px;
+}
+
 #landing .landing-btn a,
 #landing .landing-btn button {
   background-color: #0056FD;
   border-radius: 8px;
-  padding: 12px 0;
+  padding: 8px 0;
   display: inline-block;
   width: 100%;
   color: #FFFFFF ;
   text-decoration: none;
   font-weight: 700;
-  font-size: 12px;
-  margin-top: 28px;
+  font-size: 16px;
+  margin-top: 22px;
   text-align: center;
 }
-.radio-input-container {
-  align-items: center;
-  display: flex;
-  min-height: 42px;
-}
-.radio-input:nth-of-type(1) {
-  margin-right: 25px;
+
+@media only screen and (max-width: 1200px) {
+  #landing .landing-btn a,
+  #landing .landing-btn button {
+    margin-top: 0px;
+  }
 }
 /* End landing */
 /* Start pages */
@@ -222,6 +256,20 @@ body {
   border-radius: 8px;
   display: inline-block;
 }
+
+@media only screen and (max-width: 420px) {
+  #pages .list-container ul li a{
+    padding: 6px 0;
+    width: 35px;
+    font-size: 14px;
+  }
+
+  #pages .list-container ul li .btn{
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
 #pages .list-container .arrow-left {
   margin-left: 15px;
 }
