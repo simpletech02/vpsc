@@ -11,6 +11,7 @@
             <x-table.th sorting="id">ID</x-table.th>
             <x-table.th sorting="company_id">Company ID</x-table.th>
             <x-table.th sorting="name">Name</x-table.th>
+            <x-table.th sorting="link">Link</x-table.th>
             <x-table.th sorting="logo">Logo</x-table.th>
             <x-table.th sorting="virtualization">Virtualization</x-table.th>
             <x-table.th sorting="crypto_friendly" class="text-center">Crypto friendly</x-table.th>
@@ -24,6 +25,7 @@
                 <th scope="row">{{$company->id}}</th>
                 <td>{{$company->company_id}}</td>
                 <td>{{$company->name}}</td>
+                <td><a href="{{$company->link}}" target="_blank">{{$company->link}}</a></td>
                 <td>{{$company->logo}}</td>
                 <td>{{$company->virtualization}}</td>
                 <td class="text-center">

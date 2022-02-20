@@ -127,6 +127,7 @@ class PlanTable extends Component
                 ->selectRaw('
                     plans.*,
                     companies.name,
+                    companies.link,
                     companies.logo,
                     companies.company_id,
                     companies.virtualization,

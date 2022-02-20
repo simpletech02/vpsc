@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <hr />
 
                 <div class="second-row">
@@ -151,7 +151,7 @@
                 </div>
 
                 <hr class="hr-two" />
-                
+
                 <div class="third-row">
                     <div class="row justify-content-between g-4">
                         <div class="col-md-6 col-xl-2">
@@ -169,7 +169,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6 col-xl-2">
                             <strong class="input-headline">Sorting</strong>
                             <div>
@@ -192,13 +192,13 @@
                                         <div class="col-6">
                                             <strong class="input-headline">Price <span>(monthly)</span></strong>
                                         </div>
-                                        
+
                                         <div class="col-6 text-end">
                                             <div class="min-max-number" id="price-min"></div>
                                             <div class="min-max-number">-</div>
                                             <div class="min-max-number" id="price-max"></div>
                                         </div>
-                                
+
                                         <div class="col-12 rng">
                                             <div id="price-range"></div>
                                         </div>
@@ -267,12 +267,13 @@
                         @foreach($plans as $plan)
                             <tr wire:key="{{$plan->id}}">
                                 <td>
-                                    <div class="table-image-container">
+                                    <div class="table-image-container text-center">
                                         <img
                                             class="table-img img-fluid"
                                             src="{{asset('img/' . $plan->logo)}}"
                                             alt="{{$plan->name}}"
                                         />
+                                        <a class="d-block pt-1" href="{{ $plan->link }}" target="_blank">{{ $plan->link }}</a>
                                     </div>
                                 </td>
                                 <td>{{$plan->disk_size}} GB {{$plan->disk_type}}</td>

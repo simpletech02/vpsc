@@ -30,6 +30,16 @@
                     @enderror
                 </div>
 
+                <div class="form-group mt-2">
+                    <label for="name">Link</label>
+                    <input type="text" wire:model.defer="company.link" class="form-control" id="link">
+                    @error('company.link')
+                        <div class="invalid-feedback d-block">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+
                 <div class="form-group mt-4">
                     <label for="logo">Logo</label>
                     <input type="file" wire:model.defer="newLogo" class="form-control-file" id="logo">
