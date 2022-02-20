@@ -17,6 +17,9 @@ class PlanForm extends Component
 
     protected $rules = [
         'plan.company_id' => 'required|numeric',
+        'plan.name'       => 'required|string',
+        'plan.link'       => 'required|string',
+        'plan.is_btcpay'  => 'nullable|boolean',
         'plan.disk_size'  => 'required|numeric',
         'plan.disk_type'  => 'required|string',
         'plan.ram'        => 'required|numeric',

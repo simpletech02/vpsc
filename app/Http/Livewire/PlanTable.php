@@ -197,6 +197,12 @@ class PlanTable extends Component
                         $builder->where('crypto_friendly', $this->filter['cryptoFriendly']);
                     }
 
+                    // set is BTCPay filter
+                    if(isset($this->filter['isBTCPay'])) {
+                        $isBTCPay = $this->filter['isBTCPay'] === true ? 1 : 0;
+                        $builder->where('is_btcpay', $isBTCPay);
+                    }
+
                     // set payment option filter
                     if(!empty($this->filter['paymentOption'] ?? [])) {
                         $builder->whereExists(function (\Illuminate\Database\Query\Builder $query) {

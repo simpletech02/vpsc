@@ -138,7 +138,7 @@
 
                                     <div class="col-12 mt-2">
                                         <label class="radio-input">
-                                            <input type="radio" name="crypto_friendly"  wire:model.defer="filter.cryptoFriendly" value="0" />
+                                            <input type="checkbox" name="is_btcpay"  wire:model.defer="filter.isBTCPay" />
                                             <span class="with-image">
                                                 <img src="{{asset('img/btcpay.svg')}}" alt="BtcPayServer"> BtcPayServer
                                             </span>
@@ -268,12 +268,21 @@
                             <tr wire:key="{{$plan->id}}">
                                 <td>
                                     <div class="table-image-container text-center">
-                                        <img
-                                            class="table-img img-fluid"
-                                            src="{{asset('img/' . $plan->logo)}}"
-                                            alt="{{$plan->name}}"
-                                        />
-                                        <a class="d-block pt-1" href="{{ $plan->link }}" target="_blank">{{ $plan->link }}</a>
+                                        @if ($plan->link && $plan->link != '')
+                                            <a class="d-block pt-1" href="{{ $plan->link }}" target="_blank">
+                                                <img
+                                                    class="table-img img-fluid"
+                                                    src="{{asset('img/' . $plan->logo)}}"
+                                                    alt="{{$plan->name}}"
+                                                />
+                                            </a>
+                                        @else
+                                            <img
+                                                class="table-img img-fluid"
+                                                src="{{asset('img/' . $plan->logo)}}"
+                                                alt="{{$plan->name}}"
+                                            />
+                                        @endif
                                     </div>
                                 </td>
                                 <td>{{$plan->disk_size}} GB {{$plan->disk_type}}</td>

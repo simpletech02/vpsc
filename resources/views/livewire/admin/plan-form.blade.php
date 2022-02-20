@@ -10,22 +10,43 @@
         </div>
         <div class="card-body">
             <form wire:submit.prevent="save" novalidate>
+                <div class="d-lg-flex">
+                    <div class="form-group col-12 col-lg-4 pe-lg-2">
+                        <label for="company_id">Company</label>
+                        <select wire:model.defer="plan.company_id" class="form-control" id="company_id">
+                            <option wire:key="company-select-empty" value="">Select company</option>
+                            @foreach($optionCompanies as $companyId => $optionCompany)
+                                <option wire:key="company-select-{{$companyId}}" value="{{$companyId}}">
+                                    {{$companyId}} {{$optionCompany}}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('plan.company_id')
+                            <div class="invalid-feedback d-block">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label for="company_id">Company</label>
-                    <select wire:model.defer="plan.company_id" class="form-control" id="company_id">
-                        <option wire:key="company-select-empty" value="">Select company</option>
-                        @foreach($optionCompanies as $companyId => $optionCompany)
-                            <option wire:key="company-select-{{$companyId}}" value="{{$companyId}}">
-                                {{$companyId}} {{$optionCompany}}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('plan.company_id')
-                        <div class="invalid-feedback d-block">
-                            {{$message}}
-                        </div>
-                    @enderror
+                    <div class="form-group col-12 col-lg-4 px-lg-2 pt-2 pt-lg-0">
+                        <label for="name">Name</label>
+                        <input type="text" wire:model.defer="plan.name" class="form-control" id="name">
+                        @error('plan.name')
+                            <div class="invalid-feedback d-block">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-12 col-lg-4 px-lg-2 pt-2 pt-lg-0">
+                        <label for="link">Link</label>
+                        <input type="text" wire:model.defer="plan.link" class="form-control" id="link">
+                        @error('plan.link')
+                            <div class="invalid-feedback d-block">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="d-lg-flex mt-2">
@@ -134,6 +155,11 @@
                         </div>
                         @enderror
                     </div>
+                </div>
+
+                <div class="form-check mt-2">
+                    <input type="checkbox" wire:model.defer="plan.is_btcpay" class="form-check-input" id="is_btcpay">
+                    <label class="form-check-label" for="is_btcpay">Is BTCPay</label>
                 </div>
 
                 <div class="mt-4">
