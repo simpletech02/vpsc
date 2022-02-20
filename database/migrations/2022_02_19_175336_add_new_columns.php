@@ -15,6 +15,7 @@ class AddNewColumns extends Migration
     {
         Schema::table('companies', function (Blueprint $table) {
             $table->string('link')->after('crypto_friendly');
+            $table->string('primary_currency', 3)->after('link');
         });
 
         Schema::table('plans', function (Blueprint $table) {

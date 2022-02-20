@@ -29,13 +29,14 @@ class CompanyForm extends Component
     public $optionPaymentOptions = [];
 
     protected $rules = [
-        'company.company_id'      => 'required|numeric',
-        'company.name'            => 'required|string',
-        'company.link'            => 'required|string',
-        'company.logo'            => 'required|string',
-        'company.virtualization'  => 'required|string',
-        'company.crypto_friendly' => 'nullable|boolean',
-        'newLogo'                 => 'nullable|image'
+        'company.company_id'       => 'required|numeric',
+        'company.name'             => 'required|string',
+        'company.link'             => 'required|string',
+        'company.logo'             => 'required|string',
+        'company.virtualization'   => 'required|string',
+        'company.crypto_friendly'  => 'nullable|boolean',
+        'company.primary_currency' => 'required|string|in:usd,eur,rub',
+        'newLogo'                  => 'nullable|image'
     ];
 
     public function mount(Company $company = null)

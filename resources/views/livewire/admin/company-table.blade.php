@@ -14,6 +14,7 @@
             <x-table.th sorting="link">Link</x-table.th>
             <x-table.th sorting="logo">Logo</x-table.th>
             <x-table.th sorting="virtualization">Virtualization</x-table.th>
+            <x-table.th sorting="primary_currency">Primary Currency</x-table.th>
             <x-table.th sorting="crypto_friendly" class="text-center">Crypto friendly</x-table.th>
             <x-table.th sorting="dt_added">Added</x-table.th>
             <th scope="col"></th>
@@ -28,6 +29,7 @@
                 <td><a href="{{$company->link}}" target="_blank">{{$company->link}}</a></td>
                 <td>{{$company->logo}}</td>
                 <td>{{$company->virtualization}}</td>
+                <td>{{strtoupper($company->primary_currency)}}</td>
                 <td class="text-center">
                     @if($company->crypto_friendly)
                         <i class="bi bi-check-square"></i>

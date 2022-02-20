@@ -63,7 +63,22 @@
                     @enderror
                 </div>
 
-                <div class="form-check mt-2">
+                <div class="form-group mt-2">
+                    <label for="primary_currency">Primary Currency</label>
+                    <select wire:model.defer="company.primary_currency" class="form-control" id="primary_currency">
+                        <option wire:key="company-select-empty" value="">Select Primary Currency</option>
+                        <option value="usd">USD</option>
+                        <option value="eur">EUR</option>
+                        <option value="rub">RUB</option>
+                    </select>
+                    @error('company.primary_currency')
+                        <div class="invalid-feedback d-block">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="form-check mt-4">
                     <input type="checkbox" wire:model.defer="company.crypto_friendly" class="form-check-input" id="crypto_friendly">
                     <label class="form-check-label" for="crypto_friendly">Crypto friendly</label>
                 </div>
