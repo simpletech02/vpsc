@@ -129,11 +129,11 @@ class PlanTable extends Component
                     companies.name,
                     companies.link,
                     companies.logo,
+                    companies.primary_currency,
                     companies.company_id,
                     companies.virtualization,
                     companies.crypto_friendly,
                     countries.country_code,
-                    countries.currency_code,
                     countries.name as country_name
                 ')
                 ->join('companies', 'companies.company_id', '=', 'plans.company_id')

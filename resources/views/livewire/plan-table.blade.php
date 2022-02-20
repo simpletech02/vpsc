@@ -290,7 +290,7 @@
                                 <td>{{$plan->cpu_count}}x{{$plan->cpu_mhz}} MHz</td>
                                 <td>{{$plan->traffic}}</td>
                                 <td>
-                                    @switch($plan->currency_code)
+                                    @switch($plan->primary_currency)
                                         @case('usd')
                                             <strong>$ {{number_format($plan->price_usd, 2)}}</strong>
                                             <br> € {{number_format($plan->price_eur, 2)}}
