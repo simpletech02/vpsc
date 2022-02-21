@@ -131,13 +131,10 @@ class PlanTable extends Component
                     companies.primary_currency,
                     companies.company_id,
                     companies.virtualization,
-                    companies.crypto_friendly,
-                    countries.country_code,
-                    countries.name as country_name
+                    companies.crypto_friendly
                 ')
                 ->join('companies', 'companies.company_id', '=', 'plans.company_id')
-                ->join('company_country', 'companies.company_id', '=', 'company_country.company_id')
-                ->join('countries', 'company_country.country_id', '=', 'countries.id')
+                ->with('company.countries')
                 ->unless(empty($this->sorts), function (Builder $builder) {
                     foreach ($this->sorts as $sort => $direction) {
                         $builder->orderBy($sort, $direction);
@@ -175,7 +172,9 @@ class PlanTable extends Component
 
                     // set country filter
                     if(!empty($this->filter['country']) && $this->filter['country'] != 'xn') {
-                        $builder->where('country_code', $this->filter['country']);
+                        $builder->whereHas('company.countries', function($query) {
+                            $query->where('country_code', $this->filter['country']);
+                        });
                     }
 
                     // set country filter

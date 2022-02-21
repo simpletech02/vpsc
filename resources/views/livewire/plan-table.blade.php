@@ -252,7 +252,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <x-table.th sorting="name">COMPANY</x-table.th>
+                        <x-table.th sorting="companies.name">COMPANY</x-table.th>
                         <x-table.th sorting="disk_size">DISK</x-table.th>
                         <x-table.th sorting="ram">MEMORY</x-table.th>
                         <x-table.th sorting="cpu_count">CPU</x-table.th>
@@ -320,12 +320,16 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="img-container me-3 country-select">
-                                            <div class="flag {{strtolower($plan->country_code)}}"></div>
-                                        </div>
-                                        <span>{{$plan->country_name}}</span>
-                                    </div>
+                                    @if (optional($plan->company->countries))
+                                        @foreach ($plan->company->countries as $country)
+                                            <div class="d-flex align-items-center">
+                                                <div class="img-container me-3 country-select">
+                                                    <div class="flag {{strtolower($country->country_code)}}"></div>
+                                                </div>
+                                                <span>{{$country->name}}</span>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
