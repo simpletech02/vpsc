@@ -14,13 +14,13 @@ class AddNewColumns extends Migration
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->string('link')->after('crypto_friendly');
+            $table->string('link')->after('crypto_friendly')->nullable();
             $table->string('primary_currency', 3)->after('link');
         });
 
         Schema::table('plans', function (Blueprint $table) {
-            $table->string('name')->after('company_id');
-            $table->string('link')->after('name');
+            $table->string('name')->after('company_id')->nullable();
+            $table->string('link')->after('name')->nullable();
             $table->string('is_btcpay')->after('price_eur')->default(0);
         });
     }
@@ -34,6 +34,7 @@ class AddNewColumns extends Migration
     {
         Schema::table('companies', function (Blueprint $table) {
             $table->dropColumn('link');
+            $table->dropColumn('primary_currency');
         });
 
         Schema::table('plans', function (Blueprint $table) {

@@ -267,13 +267,13 @@
                         @foreach($plans as $plan)
                             <tr wire:key="{{$plan->id}}">
                                 <td>
-                                    <div class="table-image-container text-center">
-                                        @if ($plan->link && $plan->link != '')
-                                            <a class="d-block pt-1" href="{{ $plan->link }}" target="_blank">
+                                    <div class="table-image-container text-center h-100">
+                                        @if ($plan->company_link && $plan->company_link != '')
+                                            <a class="d-block pt-1" href="{{ $plan->company_link }}" target="_blank">
                                                 <img
                                                     class="table-img img-fluid"
                                                     src="{{asset('img/' . $plan->logo)}}"
-                                                    alt="{{$plan->name}}"
+                                                    alt="{{$plan->country_name}}"
                                                 />
                                             </a>
                                         @else
@@ -282,6 +282,10 @@
                                                 src="{{asset('img/' . $plan->logo)}}"
                                                 alt="{{$plan->name}}"
                                             />
+                                        @endif
+
+                                        @if ($plan->link && $plan->link != '')
+                                            <a class="d-block pt-2" href="{{$plan->link}}" target="_blank">{{$plan->name}}</a>
                                         @endif
                                     </div>
                                 </td>

@@ -126,8 +126,7 @@ class PlanTable extends Component
             'plans' => Plan::query()
                 ->selectRaw('
                     plans.*,
-                    companies.name,
-                    companies.link,
+                    companies.link as company_link,
                     companies.logo,
                     companies.primary_currency,
                     companies.company_id,

@@ -31,7 +31,7 @@ class CompanyForm extends Component
     protected $rules = [
         'company.company_id'       => 'required|numeric',
         'company.name'             => 'required|string',
-        'company.link'             => 'required|string',
+        'company.link'             => 'nullable|string',
         'company.logo'             => 'required|string',
         'company.virtualization'   => 'required|string',
         'company.crypto_friendly'  => 'nullable|boolean',
