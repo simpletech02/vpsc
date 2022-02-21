@@ -177,7 +177,7 @@ class PlanTable extends Component
                         });
                     }
 
-                    // set country filter
+                    // set traffic
                     if(!empty($this->filter['traffic'])) {
                         $builder->where('traffic', $this->filter['traffic']);
                     }
@@ -203,18 +203,8 @@ class PlanTable extends Component
 
                     // set payment option filter
                     if(!empty($this->filter['paymentOption'] ?? [])) {
-                        $builder->whereExists(function (\Illuminate\Database\Query\Builder $query) {
-                            $query->select('companies.company_id')
-                                ->from('companies')
-                                ->join('company_payment_option',
-                                    'companies.company_id',
-                                    'company_payment_option.company_id'
-                                )
-                                ->join('payment_options',
-                                    'company_payment_option.option_id',
-                                    'payment_options.option_id'
-                                )
-                                ->where('payment_options.option_id', $this->filter['paymentOption']);
+                        $builder->whereHas('company.paymentOptions', function($query) {
+                            $query->where('payment_options.option_id', $this->filter['paymentOption']);
                         });
                     }
 
