@@ -21,7 +21,7 @@ class AddNewColumns extends Migration
         Schema::table('plans', function (Blueprint $table) {
             $table->string('name')->after('company_id')->nullable();
             $table->string('link')->after('name')->nullable();
-            $table->string('is_btcpay')->after('price_eur')->default(0);
+            $table->boolean('is_btcpay')->after('price_eur')->default(0);
         });
     }
 
