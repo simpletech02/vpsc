@@ -134,7 +134,7 @@ class PlanTable extends Component
                     companies.crypto_friendly
                 ')
                 ->join('companies', 'companies.company_id', '=', 'plans.company_id')
-                ->with('company.countries')
+                ->with('company.countries', 'company.paymentOptions')
                 ->unless(empty($this->sorts), function (Builder $builder) {
                     foreach ($this->sorts as $sort => $direction) {
                         $builder->orderBy($sort, $direction);

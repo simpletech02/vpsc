@@ -258,7 +258,7 @@
                         <x-table.th sorting="cpu_count">CPU</x-table.th>
                         <x-table.th sorting="traffic">TRAFFIC</x-table.th>
                         <x-table.th sorting="price_usd">PRICE</x-table.th>
-                        <x-table.th>CRYPTO FRIENDLY</x-table.th>
+                        <x-table.th>PAYMENT OPTIONS</x-table.th>
                         <x-table.th>COUNTRY</x-table.th>
                     </tr>
                     </thead>
@@ -313,10 +313,12 @@
                                     @endswitch
                                 </td>
                                 <td class="text-center">
-                                    @if($plan->crypto_friendly)
-                                        Yes
-                                    @else
-                                        No
+                                    @if (optional($plan->company->paymentOptions))
+                                        @foreach ($plan->company->paymentOptions as $paymentOption)
+                                            <div class="d-flex align-items-center mb-1">
+                                                <span>{{$paymentOption->name}}</span>
+                                            </div>
+                                        @endforeach
                                     @endif
                                 </td>
                                 <td>
