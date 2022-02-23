@@ -15,7 +15,7 @@
             <x-table.th sorting="logo">Logo</x-table.th>
             <x-table.th sorting="virtualization">Virtualization</x-table.th>
             <x-table.th sorting="primary_currency">Primary Currency</x-table.th>
-            <x-table.th sorting="crypto_friendly" class="text-center">Crypto friendly</x-table.th>
+            <x-table.th sorting="crypto_friendly" class="text-center">Crypto Friendly</x-table.th>
             <x-table.th sorting="dt_added">Added</x-table.th>
             <th scope="col"></th>
         </tr>
@@ -42,6 +42,10 @@
                     <a href="{{route('admin.companies.edit', ['company' => $company->id])}}" class="btn btn-outline">
                         <i class="bi bi-pencil-square"></i>
                         Edit
+                    </a>
+                    <a href="{{route('admin.plans', ['company' => $company->company_id])}}" class="btn btn-outline">
+                        <i class="bi bi-collection"></i>
+                        Show Plans
                     </a>
                 </td>
             </tr>
