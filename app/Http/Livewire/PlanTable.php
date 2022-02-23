@@ -126,18 +126,15 @@ class PlanTable extends Component
             'plans' => Plan::query()
                 ->selectRaw('
                     plans.*,
-                    companies.name,
+                    companies.link as company_link,
                     companies.logo,
+                    companies.primary_currency,
                     companies.company_id,
                     companies.virtualization,
-                    companies.crypto_friendly,
-                    countries.country_code,
-                    countries.currency_code,
-                    countries.name as country_name
+                    companies.crypto_friendly
                 ')
                 ->join('companies', 'companies.company_id', '=', 'plans.company_id')
-                ->join('company_country', 'companies.company_id', '=', 'company_country.company_id')
-                ->join('countries', 'company_country.country_id', '=', 'countries.id')
+                ->with('company.countries', 'company.paymentOptions')
                 ->unless(empty($this->sorts), function (Builder $builder) {
                     foreach ($this->sorts as $sort => $direction) {
                         $builder->orderBy($sort, $direction);
@@ -175,10 +172,12 @@ class PlanTable extends Component
 
                     // set country filter
                     if(!empty($this->filter['country']) && $this->filter['country'] != 'xn') {
-                        $builder->where('country_code', $this->filter['country']);
+                        $builder->whereHas('company.countries', function($query) {
+                            $query->where('country_code', $this->filter['country']);
+                        });
                     }
 
-                    // set country filter
+                    // set traffic
                     if(!empty($this->filter['traffic'])) {
                         $builder->where('traffic', $this->filter['traffic']);
                     }
@@ -196,20 +195,16 @@ class PlanTable extends Component
                         $builder->where('crypto_friendly', $this->filter['cryptoFriendly']);
                     }
 
+                    // set is BTCPay filter
+                    if(isset($this->filter['isBTCPay'])) {
+                        $isBTCPay = $this->filter['isBTCPay'] === true ? 1 : 0;
+                        $builder->where('is_btcpay', $isBTCPay);
+                    }
+
                     // set payment option filter
                     if(!empty($this->filter['paymentOption'] ?? [])) {
-                        $builder->whereExists(function (\Illuminate\Database\Query\Builder $query) {
-                            $query->select('companies.company_id')
-                                ->from('companies')
-                                ->join('company_payment_option',
-                                    'companies.company_id',
-                                    'company_payment_option.company_id'
-                                )
-                                ->join('payment_options',
-                                    'company_payment_option.option_id',
-                                    'payment_options.option_id'
-                                )
-                                ->where('payment_options.option_id', $this->filter['paymentOption']);
+                        $builder->whereHas('company.paymentOptions', function($query) {
+                            $query->where('payment_options.option_id', $this->filter['paymentOption']);
                         });
                     }
 

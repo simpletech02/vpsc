@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <hr />
 
                 <div class="second-row">
@@ -138,7 +138,7 @@
 
                                     <div class="col-12 mt-2">
                                         <label class="radio-input">
-                                            <input type="radio" name="crypto_friendly"  wire:model.defer="filter.cryptoFriendly" value="0" />
+                                            <input type="checkbox" name="is_btcpay"  wire:model.defer="filter.isBTCPay" />
                                             <span class="with-image">
                                                 <img src="{{asset('img/btcpay.svg')}}" alt="BtcPayServer"> BtcPayServer
                                             </span>
@@ -151,7 +151,7 @@
                 </div>
 
                 <hr class="hr-two" />
-                
+
                 <div class="third-row">
                     <div class="row justify-content-between g-4">
                         <div class="col-md-6 col-xl-2">
@@ -169,7 +169,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6 col-xl-2">
                             <strong class="input-headline">Sorting</strong>
                             <div>
@@ -192,13 +192,13 @@
                                         <div class="col-6">
                                             <strong class="input-headline">Price <span>(monthly)</span></strong>
                                         </div>
-                                        
+
                                         <div class="col-6 text-end">
                                             <div class="min-max-number" id="price-min"></div>
                                             <div class="min-max-number">-</div>
                                             <div class="min-max-number" id="price-max"></div>
                                         </div>
-                                
+
                                         <div class="col-12 rng">
                                             <div id="price-range"></div>
                                         </div>
@@ -252,13 +252,13 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <x-table.th sorting="name">COMPANY</x-table.th>
+                        <x-table.th sorting="companies.name">COMPANY</x-table.th>
                         <x-table.th sorting="disk_size">DISK</x-table.th>
                         <x-table.th sorting="ram">MEMORY</x-table.th>
                         <x-table.th sorting="cpu_count">CPU</x-table.th>
                         <x-table.th sorting="traffic">TRAFFIC</x-table.th>
                         <x-table.th sorting="price_usd">PRICE</x-table.th>
-                        <x-table.th>CRYPTO FRIENDLY</x-table.th>
+                        <x-table.th>PAYMENT OPTIONS</x-table.th>
                         <x-table.th>COUNTRY</x-table.th>
                     </tr>
                     </thead>
@@ -267,12 +267,26 @@
                         @foreach($plans as $plan)
                             <tr wire:key="{{$plan->id}}">
                                 <td>
-                                    <div class="table-image-container">
-                                        <img
-                                            class="table-img img-fluid"
-                                            src="{{asset('img/' . $plan->logo)}}"
-                                            alt="{{$plan->name}}"
-                                        />
+                                    <div class="table-image-container text-center h-100">
+                                        @if ($plan->company_link && $plan->company_link != '')
+                                            <a class="d-block pt-1" href="{{ $plan->company_link }}" target="_blank">
+                                                <img
+                                                    class="table-img img-fluid"
+                                                    src="{{asset('img/' . $plan->logo)}}"
+                                                    alt="{{$plan->country_name}}"
+                                                />
+                                            </a>
+                                        @else
+                                            <img
+                                                class="table-img img-fluid"
+                                                src="{{asset('img/' . $plan->logo)}}"
+                                                alt="{{$plan->name}}"
+                                            />
+                                        @endif
+
+                                        @if ($plan->link && $plan->link != '')
+                                            <a class="d-block pt-2" href="{{$plan->link}}" target="_blank">{{$plan->name}}</a>
+                                        @endif
                                     </div>
                                 </td>
                                 <td>{{$plan->disk_size}} GB {{$plan->disk_type}}</td>
@@ -280,7 +294,7 @@
                                 <td>{{$plan->cpu_count}}x{{$plan->cpu_mhz}} MHz</td>
                                 <td>{{$plan->traffic}}</td>
                                 <td>
-                                    @switch($plan->currency_code)
+                                    @switch($plan->primary_currency)
                                         @case('usd')
                                             <strong>$ {{number_format($plan->price_usd, 2)}}</strong>
                                             <br> € {{number_format($plan->price_eur, 2)}}
@@ -299,19 +313,25 @@
                                     @endswitch
                                 </td>
                                 <td class="text-center">
-                                    @if($plan->crypto_friendly)
-                                        Yes
-                                    @else
-                                        No
+                                    @if (optional($plan->company->paymentOptions))
+                                        @foreach ($plan->company->paymentOptions as $paymentOption)
+                                            <div class="d-flex align-items-center mb-1">
+                                                <span>{{$paymentOption->name}}</span>
+                                            </div>
+                                        @endforeach
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="img-container me-3 country-select">
-                                            <div class="flag {{strtolower($plan->country_code)}}"></div>
-                                        </div>
-                                        <span>{{$plan->country_name}}</span>
-                                    </div>
+                                    @if (optional($plan->company->countries))
+                                        @foreach ($plan->company->countries as $country)
+                                            <div class="d-flex align-items-center">
+                                                <div class="img-container me-3 country-select">
+                                                    <div class="flag {{strtolower($country->country_code)}}"></div>
+                                                </div>
+                                                <span>{{$country->name}}</span>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
