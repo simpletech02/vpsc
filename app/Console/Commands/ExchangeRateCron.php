@@ -95,6 +95,7 @@ class ExchangeRateCron extends Command
                             break;
                         case 'RUB':
                             foreach ($company->plans as $plan) {
+                                $basePrice = $plan->price_rub;
                                 $plan->price_eur = round(($exchangeRate->eur / $exchangeRate->rub) * $basePrice, 2);
                                 $plan->price_usd = round(($exchangeRate->usd / $exchangeRate->rub) * $basePrice, 2);
                                 $savePlan = $plan->save();
