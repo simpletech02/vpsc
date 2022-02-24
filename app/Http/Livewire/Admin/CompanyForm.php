@@ -61,7 +61,7 @@ class CompanyForm extends Component
         $this->validate();
 
         // prepare company data
-        if($this->company->crypto_friendly === null) {
+        if ($this->company->crypto_friendly === null) {
             $this->company->crypto_friendly = false;
         }
 
