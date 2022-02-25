@@ -10,12 +10,12 @@ $(function () {
     let priceRangeMax = livewireComponent.get('options.price.max');
     $priceRange.slider({
         range: true,
-        min: priceRangeMin,
+        min: 0,
         max: priceRangeMax,
-        values: [livewireComponent.get('filter.price.min'), livewireComponent.get('filter.price.max')],
+        values: [priceRangeMin, priceRangeMax],
         slide: function (event, ui) {
             // update ui
-            if(ui.values[0] > priceRangeMin || ui.values[1] < priceRangeMax) {
+            if (ui.values[0] > priceRangeMin || ui.values[1] < priceRangeMax) {
                 $(this).addClass('active-slider');
             } else {
                 $(this).removeClass('active-slider');
@@ -23,10 +23,65 @@ $(function () {
             $("#price-min").html("$" + ui.values[0]);
             $("#price-max").html("$" + ui.values[1]);
 
+            $("#input-price-min").val(ui.values[0]);
+            $("#input-price-max").val(ui.values[1]);
+
             // update livewire data
             livewireComponent.set('filter.price.min', ui.values[0], true);
             livewireComponent.set('filter.price.max', ui.values[1], true);
         }
+    });
+
+    $("#input-price-min").on('change', function() {
+        let inputPriceMin = $(this).val();
+
+        // Handle if setting min greater than max
+        if (parseFloat(inputPriceMin) > parseFloat($($priceRange).slider("option", "values")[1])) {
+            inputPriceMin = $($priceRange).slider("option", "values")[1]
+            $("#input-price-min").val(inputPriceMin)
+        } else if (parseFloat(inputPriceMin) <= 0) {
+            inputPriceMin = 0;
+            $("#input-price-min").val(inputPriceMin)
+        }
+
+        // Update UI
+        if (inputPriceMin >= priceRangeMin || parseFloat($($priceRange).slider("option", "values")[1]) < priceRangeMax) {
+            $($priceRange).addClass('active-slider');
+        } else {
+            $($priceRange).removeClass('active-slider');
+        }
+
+        $($priceRange).slider("option", "values", [ inputPriceMin, $($priceRange).slider("option", "values")[1] ]);
+
+        $("#price-min").html("$" + inputPriceMin);
+
+        livewireComponent.set('filter.price.min', inputPriceMin, true);
+    });
+
+    $("#input-price-max").on('change', function() {
+        let inputPriceMax = $(this).val();
+
+        // Handle if setting min greater than max
+        if (parseFloat(inputPriceMax) > parseFloat(priceRangeMax)) {
+            inputPriceMax = $($priceRange).slider("option", "values")[1]
+            $("#input-price-max").val(inputPriceMax)
+        } else if (parseFloat(inputPriceMax) <= parseFloat($($priceRange).slider("option", "values")[0])) {
+            inputPriceMax = parseFloat($($priceRange).slider("option", "values")[0]);
+            $("#input-price-max").val(inputPriceMax)
+        }
+
+        // Update UI
+        if (parseFloat($($priceRange).slider("option", "values")[0]) > priceRangeMin || inputPriceMax < priceRangeMax) {
+            $($priceRange).addClass('active-slider');
+        } else {
+            $($priceRange).removeClass('active-slider');
+        }
+
+        $($priceRange).slider("option", "values", [ $($priceRange).slider("option", "values")[0], inputPriceMax]);
+
+        $("#price-max").html("$" + inputPriceMax);
+
+        livewireComponent.set('filter.price.max', inputPriceMax, true);
     });
 
     $("#price-min").html("$" + $priceRange.slider("values", 0));

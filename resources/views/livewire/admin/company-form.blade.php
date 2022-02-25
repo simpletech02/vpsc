@@ -80,7 +80,7 @@
 
                 <div class="form-check mt-4">
                     <input type="checkbox" wire:model.defer="company.crypto_friendly" class="form-check-input" id="crypto_friendly">
-                    <label class="form-check-label" for="crypto_friendly">Crypto friendly</label>
+                    <label class="form-check-label" for="crypto_friendly">Crypto Friendly</label>
                 </div>
 
                 <div class="mt-4">

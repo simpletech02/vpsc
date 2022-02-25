@@ -52,6 +52,11 @@ class PlanForm extends Component
 
         $this->validate();
 
+        // prepare plan data
+        if ($this->plan->is_btcpay === null) {
+            $this->plan->is_btcpay = false;
+        }
+
         $this->plan->save();
         $this->redirectRoute('admin.plans');
     }

@@ -1,9 +1,23 @@
 <div class="container">
-    <div class="d-flex flex-row-reverse">
-        <a class="btn btn-primary" href="{{route('admin.plans.create')}}">
-            <i class="bi bi-plus-lg"></i>
-            Add
-        </a>
+    <div class="row">
+        <div class="col col-lg-4">
+            <div class="input-group mb-3">
+                <select class="form-select" wire:model="company" aria-label="Select entries for page">
+                    <option value="">All Companies</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->company_id }}">{{ $company->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row-reverse">
+                <a class="btn btn-primary" href="{{route('admin.plans.create')}}">
+                    <i class="bi bi-plus-lg"></i>
+                    Add
+                </a>
+            </div>
+        </div>
     </div>
     <table class="table table-striped">
         <thead>

@@ -43,7 +43,7 @@
                                     'isActive' => request()->routeIs('admin.countries*')
                                 ],
                                 [
-                                    'label' => 'Payment options',
+                                    'label' => 'Payment Options',
                                     'href' => route('admin.payment-options'),
                                     'isActive' => request()->routeIs('admin.payment-options*')
                                 ],

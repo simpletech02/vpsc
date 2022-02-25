@@ -80,8 +80,7 @@
                             <div class="form-item">
                                 <input id="country_selector" data-countries="{{json_encode($options['countries'])}}" type="text" />
                                 <label for="country_selector" style="display: none"
-                                >Select a country here...</label
-                                >
+                                >Select a country here...</label>
                             </div>
                         </div>
                         <div wire:ignore class="col-md-6 col-lg-3">
@@ -208,14 +207,14 @@
                                 <div class="col-6 col-sm-2 mt-2">
                                     <label for="" class="form-label">Min</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control price-range-min-max" id="">
+                                        <input type="text" class="form-control price-range-min-max" id="input-price-min">
                                     </div>
                                 </div>
 
                                 <div class="col-6 col-sm-2 mt-2">
                                     <label for="" class="form-label">Max</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control price-range-min-max" id="">
+                                        <input type="text" class="form-control price-range-min-max" id="input-price-max">
                                     </div>
                                 </div>
                             </div>

@@ -36,4 +36,13 @@ class Company extends Model
             'company_id'
         );
     }
+
+    public function plans()
+    {
+        return $this->hasMany(
+            Plan::class,
+            'company_id',
+            'company_id'
+        );
+    }
 }
